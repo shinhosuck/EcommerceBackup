@@ -1,0 +1,877 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+/*
+=========
+base.html
+=========*/
+
+/* navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(78, 78, 78);
+    padding: 1rem 0;
+}
+.navitem-container {
+    display: flex;
+    align-items: center;
+}
+.brand-name {
+    font-size: 1.7rem;
+    padding: 0 0.5rem;
+}
+.brand-name a {
+    color: rgb(0, 173, 0);
+}
+.item {
+    padding: 0 0.5rem;
+}
+.item a {
+    color: white;
+}
+.basket {
+    font-size: 1.2rem;
+    position: relative;
+}
+.basket small {
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    font-weight: normal;
+    top:-8px;
+    left: 15px
+}
+/* search */
+.search-input {
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+.search-container {
+    background: gray;
+    padding: 0.7rem;
+    display: flex;
+    border-radius: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    color: white;
+}
+.search-icon, .times-icon{
+    cursor: pointer;
+}
+::placeholder {
+    color: lightgray;
+}
+/* slide banner */
+.slide-container {
+    position: relative;
+}
+.slide-image-container {
+    display: flex;
+    overflow-x: hidden;
+    align-items: flex-start;
+}
+.slide-img {
+    flex: 0 0 50%;
+    display: flex;
+}
+.slide-img img {
+    max-width: 100%;
+    height: auto;
+}
+.indicator {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+.circle {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: rgb(167, 167, 167);
+    margin: 0 0.2rem;
+}
+/* secondary-menu */
+.secondary-menu {
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 0.7rem 0;
+}
+.secondary-item-container {
+    display: flex;
+}
+.secondary-item-container li {
+    padding: 0 1rem;
+}
+.secondary-item-container li a {
+    color: white;
+}
+/* side-categories */
+.side-categories {
+    /* position: relative; */
+    /* min-height: 100vh; */
+    /* margin-top: 0; */
+}
+.categories {
+    position: absolute;
+    /* overflow: hidden; */
+    height: 100vh;
+    left: -100%;
+    top: 0;
+    /* background: rgba(0, 0, 0, 0.7); */
+    transition:left 0.4s ease-in-out;
+}
+.show-categories {
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    left: 0%
+}
+.category-items {
+    width: 20%;
+    height: 100%;
+    overflow-y: auto;
+    background: rgb(230, 230, 230);
+}
+.close-button {
+    background: gray;
+    text-align: end;
+    /* padding: 0.5rem 0; */
+    width: 20%;
+}
+.times-button {
+    padding: 0.5rem 0.7rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    animation-name: pulse;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
+
+}
+@keyframes pulse {
+    0%{
+        transform: scale(1)
+    }
+    50%{
+        transform: scale(1.4)
+    }
+    100%{
+        transform: scale(1)
+    }
+}
+.category-link {
+    color: black;
+    display: block;
+    padding: 0.5rem 4rem;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+}
+.category-link:hover {
+    color: rgb(252, 252, 252);
+    background: rgb(60, 60, 60);
+}
+/* end of category */
+
+/* sub-category */
+.sub-category-link{
+    color: black;
+    display: block;
+    padding: 0.5rem 4rem;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+.sub-category-link:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(100, 100, 100);
+}
+/*
+================
+end of base.html
+================*/
+
+/*
+=============
+register.html
+=============*/
+
+.register-row {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-container {
+    /*flex: 0 0 30%;*/
+    width: 400px;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid rgb(185, 185, 185);
+}
+.register-button {
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(0, 128, 0);
+    background: rgb(0, 128, 0);
+    color: rgb(255, 255, 255);
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.register-button:hover {
+    background: rgb(0, 82, 0);
+    border: 1px solid rgb(0, 82, 0);
+}
+.register-cancel {
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(129, 129, 129);
+    color: rgb(255, 255, 255);
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.register-cancel:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(92, 92, 92);
+    border: 1px solid rgb(92, 92, 92);
+}
+.register-text {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+.register-login-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: rgb(0, 90, 0);
+}
+.register-login-link:hover {
+    color: rgb(0, 90, 0);
+}
+/*
+====================
+end of register.html
+====================*/
+
+/*
+==========
+login.html
+========== */
+
+.login-row {
+    display: flex;
+    justify-content: center;
+}
+.login-container {
+    flex: 0 0 30%;
+    padding: 1rem;
+    border: 1px solid rgb(185, 185, 185);
+    margin-top: 5rem;
+    border-radius: 20px;
+}
+.message-success {
+    font-size: 0.9rem;
+    color: green;
+}
+.login-title{
+    flex: 0 0 100%;
+    margin-bottom: 1rem;
+}
+.login-button {
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(0, 128, 0);
+    background: rgb(0, 128, 0);
+    color: rgb(255, 255, 255);
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.login-button:hover {
+    background: rgb(0, 82, 0);
+    border: 1px solid rgb(0, 82, 0);
+}
+.login-cancel {
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(129, 129, 129);
+    color: rgb(255, 255, 255);
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.login-cancel:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(92, 92, 92);
+    border: 1px solid rgb(92, 92, 92);
+}
+.login-text {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+.login-register-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: rgb(0, 90, 0);
+}
+.login-register-link:hover {
+    color: rgb(0, 90, 0);
+}
+/*
+=================
+end of login.html
+================= */
+
+/*
+===========
+logout.html
+=========== */
+
+.logout-row {
+    display: flex;
+    justify-content: center;
+}
+.logout-container {
+    flex: 0 0 30%;
+    padding: 1rem;
+    margin-top: 5rem;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 20px;
+}
+.logout-login {
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(0, 128, 0);
+    background: rgb(0, 128, 0);
+    color: rgb(255, 255, 255);
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.logout-login:hover {
+    background: rgb(0, 82, 0);
+    border: 1px solid rgb(0, 82, 0);
+}
+.logout-cancel {
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(129, 129, 129);
+    color: rgb(255, 255, 255);
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.logout-cancel:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(92, 92, 92);
+    border: 1px solid rgb(92, 92, 92);
+}
+/*
+==================
+end of logout.html
+================== */
+
+/*
+============
+profile.html
+============*/
+
+.profile-row {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-container {
+    flex: 0 0 30%;
+    padding: 1rem;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 20px;
+}
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.profile-contents {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+.profile-title{
+    flex: 0 0 100%;
+    margin-bottom: 1rem;
+}
+.profile-text {
+    margin-left: 0.5rem;
+}
+.profile-text small {
+    display: block;
+}
+.profile-button {
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(0, 128, 0);
+    background: rgb(0, 128, 0);
+    color: rgb(255, 255, 255);
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.profile-button:hover {
+    background: rgb(0, 82, 0);
+    border: 1px solid rgb(0, 82, 0);
+}
+.profile-cancel {
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(129, 129, 129);
+    color: rgb(255, 255, 255);
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.profile-cancel:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(92, 92, 92);
+    border: 1px solid rgb(92, 92, 92);
+}
+/*
+===================
+end of profile.html
+===================*/
+
+/*
+=========
+home.html
+========= */
+
+.products {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    margin: 0 2rem;
+    flex-wrap: wrap;
+    /* border: 1px solid black */
+}
+.most-popular {
+    flex: 0 0 95%;
+    margin: 1rem;
+    margin-bottom: 0;
+    font-weight: normal;
+    /* border: 1px solid black */
+}
+.product {
+    flex: 0 0 17%;
+    width: 17%;
+    padding: 0.7rem;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 3px rgb(192, 192, 192);
+    /* border: 1px solid rgb(0, 0, 0) */
+}
+.product-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.3rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgb(230, 230, 230);
+    transition: transform 0.4s linear;
+}
+.product-img:hover {
+    transform: scale(1.17)
+}
+.product-name {
+    font-size: 1rem;
+    color: rgb(31, 31, 31);
+}
+.product-price {
+    color: rgb(1, 128, 1);
+}
+.product-description{
+    color: rgb(92, 92, 92);
+    display: block;
+    margin-top: 0.5rem;
+    flex: 0 0 100%
+}
+/*
+================
+end of home.html
+================ */
+
+/*
+===================
+product_detail.html
+===================*/
+
+.product-detail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+.product-detail-container {
+    padding: 1rem;
+    margin-top: 2rem;
+    flex: 0 0 30%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    justify-content: space-between;
+    box-shadow: 1px 1px 10px 3px rgb(192, 192, 192);
+}
+.product-detail-img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgb(230, 230, 230);
+}
+.product-detail-name{
+    flex: 0 0 100%;
+    margin-bottom: 0.5rem;
+}
+.product-detail-price {
+    font-size: 0.9rem;
+    color: rgb(1, 128, 1);
+}
+.product-available {
+    font-size: 0.9rem;
+}
+.product-outstock {
+    font-size: 0.9rem;
+}
+.product-detail-description {
+    flex: 0 0 100%;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: rgb(92, 92, 92);
+}
+.add-to-basket {
+    flex: 0 0 100%;
+    font-size: 0.9rem;
+    border: 1px solid rgb(0, 128, 0);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    background: rgb(0, 128, 0);
+    color: white;
+    border-radius: 5px;
+    transition: background 0.25s ease-in-out, border 0.25s ease-in-out;
+}
+.add-to-basket:hover {
+    background: rgb(0, 66, 0);
+    border: 1px solid rgb(0, 66, 0);
+}
+.continue-shopping {
+    flex: 0 0 100%;
+    font-size: 0.9rem;
+    border: 1px solid rgb(128, 128, 128);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    background: rgb(128, 128, 128);
+    color: white;
+    border-radius: 5px;
+    transition: background 0.25s ease-in-out, border 0.25s ease-in-out;
+}
+.continue-shopping:hover {
+    background: rgb(59, 59, 59);
+    border: 1px solid rgb(59, 59, 59);
+}
+/*
+==========================
+end of product_detail.html
+==========================*/
+
+/*
+==============
+my_basket.html
+============== */
+.basket-main-container {
+    min-height: 100vh;
+}
+.my-basket {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    border: 1px solid rgb(201, 201, 201);
+    padding: 1rem;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 70%;
+    border-radius: 10px;
+}
+.basket-continue-shopping {
+    flex: 0 0 25%;
+    width: 25%;
+    margin-bottom: 1rem;
+    background: rgb(0, 128, 0);
+    border-radius: 5px;
+    padding: 0.5rem 0;
+    border: 1px solid rgb(0, 128, 0);
+    color: white;
+    text-align: center;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.basket-continue-shopping:hover {
+    background: rgb(0, 58, 0);
+    border: 1px solid rgb(0, 58, 0);
+}
+.my-basket-content {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+.my-basket-img {
+    flex: 0 0 20%;
+    width: 20%;
+    height: auto;
+}
+.basket-table {
+    flex: 0 0 80%;
+    width: 80%;
+}
+.table-row {
+    display: flex;
+    margin-bottom: 1rem;
+}
+.table-row2 {
+    display: flex;
+}
+.table-text {
+    text-align: center;
+    flex: 1;
+}
+.basket-total {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+.checkout-button {
+    padding: 0.5rem 2rem;
+    background: rgb(0, 128, 0);
+    border-radius: 5px;
+    border: 1px solid rgb(0, 128, 0);
+    color: white;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.checkout-button:hover {
+    background: rgb(0, 58, 0);
+    border: 1px solid rgb(0, 58, 0);
+}
+.quantity {
+    position: relative;
+}
+.icon-plus{
+    position: absolute;
+    display: block;
+    right: 38%;
+    top: -10px;
+    color:rgb(1, 114, 1)
+}
+.icon-minus {
+    position: absolute;
+    display: block;
+    right: 38%;
+    bottom: -10px;
+    color:rgb(1, 114, 1)
+}
+/*
+=====================
+end of my_basket.html
+===================== */
+
+/*
+=====================
+shipping_address.html
+=====================*/
+
+.address-row {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.address-title {
+    margin-bottom: 1rem;
+}
+.address-container {
+    flex: 0 0 30%;
+    padding: 0.7rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgb(185, 185, 185);
+}
+.address-button {
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(0, 128, 0);
+    background: rgb(0, 128, 0);
+    color: rgb(255, 255, 255);
+    margin-top: 0.7rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.address-button:hover {
+    background: rgb(0, 82, 0);
+    border: 1px solid rgb(0, 82, 0);
+}
+.address-cancel {
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(129, 129, 129);
+    color: rgb(255, 255, 255);
+    margin-top: 0.7rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.address-cancel:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(92, 92, 92);
+    border: 1px solid rgb(92, 92, 92);
+}
+/*
+=============================
+end of shinpping_address.html
+=============================*/
+
+/* 
+=============
+category.html
+============= */
+
+.category-products {
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.category-product {
+    flex: 0 0 20%;
+    padding: 0.7rem;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 3px rgb(192, 192, 192);
+}
+.category-product-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.category-product-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.3rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgb(230, 230, 230);
+    transition: transform 0.35s linear;
+}
+.category-product-img:hover {
+    transform: scale(1.2)
+}
+.category-product-name {
+    font-size: 1rem;
+    color: rgb(31, 31, 31);
+}
+.category-product-price {
+    color: rgb(1, 128, 1);
+}
+.category-product-description{
+    color: rgb(92, 92, 92);
+    display: block;
+    margin-top: 0.5rem;
+    flex: 0 0 100%
+}
+/* 
+====================
+end of category.html
+==================== */
+
+/* 
+====================
+sub_category.html
+==================== */
+
+
+/* 
+========================
+end of sub_category.html
+======================== */

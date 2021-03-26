@@ -1,0 +1,36 @@
+{% extends "store/base.html" %}
+
+<title>
+    {% block title %}
+        My Basket
+    {% endblock title %}
+</title>
+
+{% block content %}
+    <div class="basket-main-container">
+        <div class="my-basket">
+            {% for order in orders %}
+                <div class="my-basket-content">
+                    <img class="my-basket-img" src="{{ order.basket.product.image.url}}" alt="">
+                    <table class="basket-table">
+                        <tr class="table-row">
+                            <th class="table-text">Product</th>
+                            <th class="table-text">Quantity</th>
+                            <th class="table-text">Price</th>
+                        </tr>
+                        <tr class="table-row2">
+                            <td class="table-text">{{ order.basket.product|truncatechars:15 }}</td>
+                            <td class="table-text quantity"> {{ order.basket.quantity }}</td>
+                            <td class="table-text">{{ order.basket.product.price}}</td>
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
+            <div class="basket-total">
+                <h4>Total Items: {{ total_items }}</h4>
+                <h4>Total Amount Due: ${{ total_amount_due }}</h4>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

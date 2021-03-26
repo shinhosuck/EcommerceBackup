@@ -1,0 +1,55 @@
+{% extends "store/base.html" %}
+
+
+<title>
+    {% block title %}
+        AiAi.com
+    {% endblock title %}
+</title>
+
+
+{% block content %}
+
+    <div class="products">
+        <h2 class="most-popular">Most Popular</h2>
+        {% for product in most_popluar %}
+        <div class="product" title="click for detail">
+            <a class="product-content" href="{% url 'store:product_detail' product.pk %}">
+                <img class="product-img" src="{{ product.image.url }}" alt="">
+                <small class="product-name">{{ product.product_name|truncatechars:15 }}</small>
+                <small class="product-price">${{ product.price }}</small>
+                <small class="product-description">{{ product.description|truncatechars:100 }}</small>
+            </a>
+        </div>
+
+        {% endfor %}
+        <h2 class="most-popular">Latest</h2>
+        {% for product in  latest %}
+        <div class="product" title="click for detail">
+            <a class="product-content" href="{% url 'store:product_detail' product.pk %}">
+                <img class="product-img" src="{{ product.image.url }}" alt="">
+                <small class="product-name">{{ product.product_name|truncatechars:15 }}</small>
+                <small class="product-price">${{ product.price }}</small>
+                <small class="product-description">{{ product.description|truncatechars:100 }}</small>
+            </a>
+        </div>
+        {% endfor %}
+        {% if just_for_you %}
+            {% if user.is_authenticated %}
+                <h2 class="most-popular">Just For You</h2>
+                {% for product in  just_for_you %}
+                    <div class="product" title="click for detail">
+                        <a class="product-content" href="{% url 'store:product_detail' product.pk %}">
+                            <img class="product-img" src="{{ product.image.url }}" alt="">
+                            <small class="product-name">{{ product.product_name|truncatechars:15 }}</small>
+                            <small class="product-price">${{ product.price }}</small>
+                            <small class="product-description">{{ product.description|truncatechars:100 }}</small>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+{% endblock content %}

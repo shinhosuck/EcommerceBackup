@@ -1,0 +1,66 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+    <title>Register</title>
+
+    <style>
+         #hint_id_username, #hint_id_password1,
+         #hint_id_password2, .asteriskField{
+            display: none;
+         }
+        #error_1_id_username strong,
+        #error_1_id_password2 strong{
+            font-size: 0.8rem;
+        }
+        #id_username,  #id_first_name,  #id_last_name,
+        #id_email, #id_password1{
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+        #id_password2 {
+            outline:none !important;
+            border: 1px solid gray;
+            box-shadow: none;
+        }
+        input {
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-row">
+        <div class="register-container">
+            <h4>Register</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="register-button">Submit</button>
+                <a class="register-cancel" type="button" href="{% url 'store:home' %}">Cancel</a>
+            </form>
+            <small class="register-text">Already have an account?</small>
+            <a class="register-login-link" href="{% url 'users:login' %}">Login</a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'store/js/main.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+

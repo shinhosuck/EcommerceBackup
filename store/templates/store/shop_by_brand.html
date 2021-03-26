@@ -1,0 +1,22 @@
+{% extends "store/base.html" %}
+
+<title>
+    {% block title %}
+        Brand Name
+    {% endblock title %}
+</title>
+
+
+{% block content %}
+    <h1>Brand Names</h1>
+    <div class="products">
+        {% for key, value in brands.items %}
+        <div class="product" title="click for detail">
+            <a class="product-content" href="{% url 'store:brand_name' value.pk %}">
+                <img class="product-img" src="{{ value.brand_image.url }}" alt="">
+                <h5 class="product-name">{{ key.upper }}</h5>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

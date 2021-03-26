@@ -1,0 +1,41 @@
+{% extends "store/base.html" %}
+
+<title>
+    {% block title %}
+        My Basket
+    {% endblock title %}
+</title>
+
+{% block content %}
+    <div class="basket-main-container">
+        <div class="my-basket">
+            <a class="basket-continue-shopping" type="button" href="{% url 'store:home' %}">Contiue Shopping</a>
+            {% for basket in baskets %}
+                <div class="my-basket-content">
+                    <img class="my-basket-img" src="{{ basket.product.image.url}}" alt="">
+                    <table class="basket-table">
+                        <tr class="table-row">
+                            <th class="table-text">Product</th>
+                            <th class="table-text">Quantity</th>
+                            <th class="table-text">Price</th>
+                        </tr>
+                        <tr class="table-row2">
+                            <td class="table-text">{{ basket.product.product_name|truncatechars:15 }}</td>
+                            <td class="table-text quantity"> {{ basket.quantity }}
+                                <a href="{% url 'store:add_item' basket.pk %}"><i class="fas fa-plus icon-plus"></i></a>
+                                <a href="{% url 'store:delete_item' basket.pk %}"><i class="fas fa-minus icon-minus"></i></a>
+                            </td>
+                            <td class="table-text">{{ basket.product.price}}</td>
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
+            <div class="basket-total">
+                <h4>Total Items: {{ user.customer.total_items }}</h4>
+                <h4>Total Amount Due: ${{ total_amount_due }}</h4>
+                <a class="checkout-button" type="button" href="{% url 'store:shipping_address' %}">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

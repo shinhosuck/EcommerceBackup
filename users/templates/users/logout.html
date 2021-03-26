@@ -1,0 +1,18 @@
+{% extends "store/base.html" %}
+
+<title>
+    {% block title %}
+        logout
+    {% endblock title %}
+</title>
+
+
+{% block content %}
+<div class="logout-row">
+    <div class="logout-container">
+        <h3>You are signed out!</h3>
+        <a class="logout-login" type="buttton" href="{% url 'users:login' %}">Login</a>
+        <a class="logout-cancel" type="buttton" href="{% url 'store:home' %}">Cancel</a>
+    </div>
+</div>
+{% endblock content %}

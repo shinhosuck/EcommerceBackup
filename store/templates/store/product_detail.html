@@ -1,0 +1,27 @@
+{% extends "store/base.html" %}
+
+
+<title>
+    {% block title %}
+        Store
+    {% endblock title %}
+</title>
+
+
+{% block content %}
+    <div class="product-detail">
+        <div class="product-detail-container">
+            <img class="product-detail-img" src="{{ product.image.url }}" alt="">
+            <p class="product-detail-name">{{ product.product_name}}</p>
+            <p class="product-detail-price">${{ product.price }}</p>
+            {% if product.on_stock %}
+                <p class="product-available">Available</p>
+            {% else %}
+                <p class="product-outstock">Out of stock</p>
+            {% endif %}
+            <p class="product-detail-description">{{ product.description }}</p>
+            <a class="add-to-basket" type="button" href="{% url 'store:add_to_basket' product.pk %}">Add to basket</a>
+            <a class="continue-shopping" type="button" href="{% url 'store:home' %}">Continue shopping</a>
+        </div>
+    </div>
+{% endblock content %}

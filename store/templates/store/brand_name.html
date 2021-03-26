@@ -1,0 +1,25 @@
+{% extends "store/base.html" %}
+
+
+<title>
+    {% block title %}
+        {{ brand_name.upper}}
+    {% endblock title %}
+</title>
+
+
+{% block content %}
+    <h1>{{ brand_name.upper }}</h1>
+    <div class="products">
+        {% for product in  products %}
+        <div class="product" title="click for detail">
+            <a class="product-content" href="{% url 'store:product_detail' product.pk %}">
+                <img class="product-img" src="{{ product.image.url }}" alt="">
+                <small class="product-name">{{ product.product_name|truncatechars:15 }}</small>
+                <small class="product-price">${{ product.price }}</small>
+                <small class="product-description">{{ product.description|truncatechars:100 }}</small>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

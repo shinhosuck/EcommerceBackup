@@ -1,0 +1,86 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+    <title>Profile</title>
+
+    <style>
+         #hint_id_username {
+            display: none;
+        }
+        #div_id_username {
+            margin-top: 0.5rem;
+        }
+        #div_id_first_name{
+            margin-top: 0.5rem;
+        }
+        #div_id_last_name {
+            margin-top: 0.5rem;
+        }
+        #div_id_email {
+            margin-top: 0.5rem;
+        }
+        #div_id_image {
+            margin-top: 0.5rem;
+        }
+        #div_id_image div {
+            font-size: 0.81rem;
+        }
+        #id_username {
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+        #id_first_name {
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+        #id_last_name {
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+        #id_email {
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-row">
+        <div class="profile-container">
+            {% for message in messages %}
+                <small>{{ message }}</small>
+            {% endfor %}
+            <div class="profile-contents">
+                <h4 class="profile-title">My profile</h4>
+                <img class="profile-img" src="{{ user.profile.image.url }}" alt="">
+                <div class="profile-text">
+                    <small>{{ user.username}}</small>
+                    <small>{{ user.first_name}} {{ user.last_name}}</small>
+                    <small>{{ user.email}}</small>
+                </div>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form|crispy }}
+                {{ profile_form|crispy }}
+                <button class="profile-button">Update</button>
+                <a class="profile-cancel" type="button" href="{% url 'store:home' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'store/js/main.js' %}"></script>
+</body>
+</html>

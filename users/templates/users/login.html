@@ -1,0 +1,56 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+    <title>Login</title>
+
+    <style>
+       .asteriskField{
+            display: none;
+        }
+        #id_username {
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+        #id_password {
+            outline:none !important;
+            border: 1px solid rgb(185, 185, 185);
+            box-shadow: none;
+        }
+        input {
+            margin-bottom: 0.5rem;
+            width: 100%
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-row">
+        <div class="login-container">
+            {% for message in messages %}
+                <small class="message-success">{{ message }}</small>
+            {% endfor %}
+            <h4 class="login-title">Login</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="login-button">Login</button>
+                <a class="login-cancel" type="button" href="{% url 'store:home' %}">Cancel</a>
+            </form>
+            <small class="login-text">Not yet registered?</small>
+            <a class="login-register-link" href="{% url 'users:register' %}">Register</a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'store/js/main.js' %}"></script>
+</body>
+</html>
